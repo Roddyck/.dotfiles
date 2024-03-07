@@ -128,3 +128,4 @@ unset __conda_setup
 # Set auto activate conda base by defualt to false
 export CONDA_AUTO_ACTIVATE_BASE=false
 
+fpath+=${ZDOTDIR:-~}/.zsh_functions
