@@ -184,7 +184,7 @@ bar {
         status_command i3status
 }
 
-exec_always --no-startup-id feh --bg-scale ~/.local/share/anime/dark-anime-ultra-hd-wallpapers2.jpg
+exec_always --no-startup-id feh --bg-scale ~/.local/share/anime/butterfly.jpg
 
 # start picom
 exec --no-startup-id picom -CGb
