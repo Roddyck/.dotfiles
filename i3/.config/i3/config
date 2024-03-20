@@ -184,7 +184,7 @@ bar {
         status_command i3status
 }
 
-exec_always --no-startup-id feh --bg-scale ~/.local/share/anime/butterfly.jpg
+exec_always --no-startup-id feh --bg-scale ~/.local/share/anime/anime-girl-in-mountains-lake.jpg
 
 # start picom
 exec --no-startup-id picom -CGb

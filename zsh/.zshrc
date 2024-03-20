@@ -129,3 +129,4 @@ unset __conda_setup
 export CONDA_AUTO_ACTIVATE_BASE=false
 
 fpath+=${ZDOTDIR:-~}/.zsh_functions
+alias air='$(go env GOPATH)/bin/air'
