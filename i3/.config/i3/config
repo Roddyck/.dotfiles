@@ -185,8 +185,7 @@ bar {
         status_command i3status
 }
 
-exec_always --no-startup-id feh --bg-scale ~/.local/share/anime/in-the-rain.png
-
+exec_always --no-startup-id feh --bg-scale ~/.local/share/anime/butterfly.jpg
 # start picom
 exec --no-startup-id picom -CGb
 
@@ -211,3 +210,7 @@ bindsym Shift+Print exec --no-startup-id maim --select "/home/$USER/Pictures/$(d
 bindsym Ctrl+Print exec --no-startup-id maim | xclip -selection clipboard -t image/png
 bindsym Ctrl+$mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
 bindsym Ctrl+Shift+Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
+
+# Set keyboard layouts
+exec_always  --no-startup-id setxkbmap -layout prog-qwerty,ru
+exec_always  --no-startup-id "setxkbmap -option 'grp:win_space_toggle'"
