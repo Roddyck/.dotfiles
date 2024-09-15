@@ -11,6 +11,10 @@ return {
             local ls = require("luasnip")
             ls.filetype_extend("javascript", { "jsdoc" })
 
+            ls.config.set_config({
+                history = true, -- keep around last snippet local to jump back
+                enable_autosnippets = true,})
+
             require("luasnip.loaders.from_vscode").lazy_load()
 
             -- vim.keymap.set({"i"}, "<C-s>e", function() ls.expand() end, {silent = true})
