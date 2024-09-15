@@ -16,7 +16,7 @@ ls.add_snippets("tex", {
     postfix("hat", { l("\\hat{" .. l.POSTFIX_MATCH .. "}") }),
     postfix("bar", { l("\\overline{" .. l.POSTFIX_MATCH .. "}") }),
     postfix("under", { l("\\underline{" .. l.POSTFIX_MATCH .. "}") }),
-    s({ trig='(%a)(%d)', regTrig=true, name='auto subscript', dscr='hi'},
+    s({ trig='(%a)(%d)', regTrig=true, name='auto subscript', dscr='auto subscript'},
         fmt([[<>_<>]],
         { f(function(_, snip) return snip.captures[1] end),
         f(function(_, snip) return snip.captures[2] end) },
@@ -31,5 +31,4 @@ ls.add_snippets("tex", {
 
 }, {
     type = "autosnippets",
-    key = "all_auto",
 })
