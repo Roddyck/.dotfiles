@@ -45,23 +45,24 @@ return {
                     require("lspconfig")[server_name].setup {
                         capabilities =  capabilities
                     }
-                end
-            },
+                end,
 
-            ["lua_ls"] = function()
-                local lspconfig = require("lspconfig")
-                lspconfig.lua_ls.setup {
-                    capabilities = capabilities,
-                    settings = {
-                        Lua = {
-                            diagnostics = {
-                                globals = { "vim", "it", "describe", "before_each", "after_each" },
+                ["lua_ls"] = function()
+                    local lspconfig = require("lspconfig")
+                    lspconfig.lua_ls.setup {
+                        capabilities = capabilities,
+                        settings = {
+                            Lua = {
+                                diagnostics = {
+                                    globals = { "vim", "it", "describe", "before_each", "after_each" },
+                                }
                             }
                         }
                     }
-                }
-            end,
+                end,
+            }
         })
+
 
         local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
