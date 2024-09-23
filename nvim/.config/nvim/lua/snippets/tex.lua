@@ -43,9 +43,43 @@ ls.add_snippets("tex", {
             { condition=conds_expand.line_begin }
     ),
 
-    s({ trig="=>", wordTrig=false }, t("\\implies")),
-    s({ trig="<=", wordTrig=false }, t("\\impliedby")),
-    s({ trig="<=>", wordTrig=false }, t("\\iff")),
+    s("mk", fmt("$ {} $ {}", { i(1), i(0) })),
+    s("dm",
+        fmt(
+            [[
+            \[
+                {}
+            \]
+            ]],
+            { i(0) })
+    ),
+    s("case",
+        fmta(
+            [[
+                \begin{cases}
+                    <>
+                \end{cases}
+            ]],
+            { i(0) },
+            { condition=math }
+        )
+    ),
+    s("box",
+        fmta(
+            [[
+                \begin{tcolorbox}
+                    <>
+                \end{tcolorbox}
+            ]],
+            { i(0) }
+        )
+    ),
+
+    s({ trig="=>", wordTrig=false }, t("\\implies"), { condition=math }),
+    s({ trig="<=", wordTrig=false }, t("\\impliedby"), { condition=math }),
+    s({ trig="iff", wordTrig=false }, t("\\iff"), { condition=math }),
+    s({ trig="~~", wordTrig=false }, t("\\approx"), { condition=math }),
+    s("!>", t("\\mapsto"), { condition=math }),
 
     s("//", fmta("\\frac{<>}{<>} <>", { i(1), i(2), i(0) }), { condition=math }),
     s("d/dx", fmta("\\frac{\\partial <>}{\\partial <>} <>", { i(1, "u"), i(2, "x"), i(0) }), { condition=math }),
@@ -54,19 +88,27 @@ ls.add_snippets("tex", {
 
     s("AA", t("\\forall"), { condition=math }),
     s("EE", t("\\exists"), { condition=math }),
+    s("cc", t("\\subset"), { condition=math }),
+    s("OO", t("\\varnothing"), { condition=math }),
+    s("\\\\", t("\\setminus"), { condition=math }),
 
-    s("\\R", t("\\mathbb{R}"), { condition=math }),
-    s("\\C", t("\\mathbb{C}"), { condition=math }),
-    s("\\Z", t("\\mathbb{Z}"), { condition=math }),
-    s("\\N", t("\\mathbb{N}"), { condition=math }),
+    s("RR", t("\\mathbb{R}"), { condition=math }),
+    s("CC", t("\\mathbb{C}"), { condition=math }),
+    s("ZZ", t("\\mathbb{Z}"), { condition=math }),
+    s("NN", t("\\mathbb{N}"), { condition=math }),
 
-    s({ trig="sq", wordTrig=false }, t("^2"), { condition=math }),
+    s({ trig="sr", wordTrig=false }, t("^2"), { condition=math }),
     s({ trig="cb", wordTrig=false }, t("^3"), { condition=math }),
-    s({ trig="tp", wordTrig=false }, fmta("^{<>}<>", { i(1), i(0) }), { condition=math }),
+    s({ trig="td", wordTrig=false }, fmta("^{<>}<>", { i(1), i(0) }), { condition=math }),
 
-    s("fun", fmt("f: {} \\to {} {}", { i(1), i(2), i(0) }), { condition=math }),
-    s("lim", fmta("\\lim\\limits_{<> \\to <>} <>", { i(1, "n"), i(2, "\\infty"), i(0)}), { condition=math }),
-    s("sum", fmta("\\sum\\limits_{i=<>}^{<>} <>", { i(1, "1"), i(2, "\\infty"), i(0)}), { condition=math }),
+    s("fun", fmt("{}: {} \\to {}: {} {}", { i(1, "f"), i(2), i(3), i(4), i(0) }), { condition=math }),
+    s("lim", fmta("\\lim_{<> \\to <>} <>", { i(1, "n"), i(2, "\\infty"), i(0)}), { condition=math }),
+    s("sum", fmta("\\sum_{i=<>}^{<>} <>", { i(1, "1"), i(2, "\\infty"), i(0)}), { condition=math }),
+    s("prod", fmta("\\prod_{i=<>}^{<>} <>", { i(1, "1"), i(2, "\\infty"), i(0)}), { condition=math }),
+    s("dint", fmta("\\int_{<>}^{<>} <>", { i(1, "-\\infty"), i(2, "\\infty"), i(0)}), { condition=math }),
+    s("sq", fmta("\\sqrt{<>} <>", { i(1), i(0) }), { condition=math }),
+
+    s("__", fmta("_{<>}<>", { i(1), i(0) }), { condition=math }),
 
     postfix("tilde", { l("\\tilde{" .. l.POSTFIX_MATCH .. "}") }),
     postfix("hat", { l("\\hat{" .. l.POSTFIX_MATCH .. "}") }),

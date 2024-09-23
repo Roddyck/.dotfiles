@@ -110,6 +110,7 @@ bindkey -s ^f "tmux-sessionizer\n"
 export PATH="/home/rdk/.local/scripts/:$PATH"
 export PATH="/usr/local/go/bin:$PATH"
 export PATH="/home/rdk/TeXmacs/:$PATH"
+export PATH="/home/rdk/.local/bin/:$PATH"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
