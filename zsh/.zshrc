@@ -70,7 +70,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -110,7 +110,7 @@ bindkey -s ^f "tmux-sessionizer\n"
 export PATH="/home/rdk/.local/scripts/:$PATH"
 export PATH="/usr/local/go/bin:$PATH"
 export PATH="/home/rdk/TeXmacs/:$PATH"
-export PATH="/home/rdk/.local/bin/:$PATH"
+export PATH="/home/rdk/.local/bin:$PATH"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!

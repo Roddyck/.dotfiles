@@ -68,7 +68,7 @@ ls.add_snippets("tex", {
         fmta(
             [[
                 \begin{tcolorbox}
-                    <>
+                <>
                 \end{tcolorbox}
             ]],
             { i(0) }
@@ -90,7 +90,7 @@ ls.add_snippets("tex", {
     s("EE", t("\\exists"), { condition=math }),
     s("cc", t("\\subset"), { condition=math }),
     s("OO", t("\\varnothing"), { condition=math }),
-    s("\\\\", t("\\setminus"), { condition=math }),
+    s("/\\", t("\\setminus"), { condition=math }),
 
     s("RR", t("\\mathbb{R}"), { condition=math }),
     s("CC", t("\\mathbb{C}"), { condition=math }),
@@ -108,7 +108,7 @@ ls.add_snippets("tex", {
     s("dint", fmta("\\int_{<>}^{<>} <>", { i(1, "-\\infty"), i(2, "\\infty"), i(0)}), { condition=math }),
     s("sq", fmta("\\sqrt{<>} <>", { i(1), i(0) }), { condition=math }),
 
-    s("__", fmta("_{<>}<>", { i(1), i(0) }), { condition=math }),
+    s({ trig="__", wordTrig=false}, fmta("_{<>}<>", { i(1), i(0) }), { condition=math }),
 
     postfix("tilde", { l("\\tilde{" .. l.POSTFIX_MATCH .. "}") }),
     postfix("hat", { l("\\hat{" .. l.POSTFIX_MATCH .. "}") }),

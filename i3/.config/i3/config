@@ -185,7 +185,7 @@ bar {
         status_command i3status
 }
 
-exec_always --no-startup-id feh --bg-scale ~/.local/share/anime/arcane-jinx-4.jpg
+exec_always --no-startup-id feh --bg-scale ~/.local/share/anime/butterfly.jpg
 # start picom
 exec --no-startup-id picom -b
 
@@ -214,6 +214,3 @@ bindsym Ctrl+Shift+Print exec --no-startup-id maim --select | xclip -selection c
 exec_always --no-startup-id setxkbmap -layout prog-qwerty,ru
 exec_always --no-startup-id setxkbmap -option 'grp:win_space_toggle'
 exec_always --no-startup-id setxkbmap -option 'caps:ctrl_modifier' && xcape -e 'Caps_Lock=Escape'
-
-exec --no-startup-id xinput set-prop 14 "libinput Tapping Enabled" 1
-

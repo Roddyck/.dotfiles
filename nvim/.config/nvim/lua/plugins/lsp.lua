@@ -36,7 +36,6 @@ return {
                 "rust_analyzer",
                 "clangd",
                 "lua_ls",
-                "pyright",
                 "gopls",
             },
             handlers = {
@@ -80,6 +79,8 @@ return {
             }),
         sources = cmp.config.sources({
               { name = 'nvim_lsp' },
+              { name = 'path' },
+              { name = 'nvim_lua' },
               { name = 'luasnip' }, -- For luasnip users.
             }, {
               { name = 'buffer' },
