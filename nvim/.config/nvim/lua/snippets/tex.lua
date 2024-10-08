@@ -6,16 +6,38 @@ local s = ls.snippet
 local i = ls.insert_node
 local f = ls.function_node
 local t = ls.text_node
+local r = ls.restore_node
+local sn = ls.snippet_node
+local d = ls.dynamic_node
 
 local fmt = require("luasnip.extras.fmt").fmt
 local fmta = require("luasnip.extras.fmt").fmta
 local postfix = require("luasnip.extras.postfix").postfix
 local l = require("luasnip.extras").lambda
+local rep = require("luasnip.extras").rep
 
 local conds_expand = require("luasnip.extras.conditions.expand")
 
 local function math()
     return vim.api.nvim_eval("vimtex#syntax#in_mathzone()") == 1
+end
+
+local mat = function(args, snip)
+    local rows = tonumber(snip.captures[2])
+    local cols = tonumber(snip.captures[3])
+    local nodes = {}
+    local ins_index = 1
+    for j = 1, rows do
+        table.insert(nodes, r(ins_index, tostring(j).."x1", i(1)))
+        ins_index = ins_index+1
+        for k = 2, cols do
+            table.insert(nodes, t" & ")
+            table.insert(nodes, r(ins_index, tostring(j).."x"..tostring(k), i(1)))
+            ins_index = ins_index + 1
+        end
+        table.insert(nodes, t{"\\\\", ""})
+    end
+    return sn(nil, nodes)
 end
 
 ls.add_snippets("tex", {
@@ -34,12 +56,25 @@ ls.add_snippets("tex", {
             \usepackage{amsmath}
             \usepackage{mathtools}
             \usepackage{tcolorbox}
+            \usepackage{graphicx}
+            \graphicspath{ {./figures} }
 
             \begin{document}
-                <>
+            <>
             \end{document}
             ]],
             { i(0) }),
+            { condition=conds_expand.line_begin }
+    ),
+
+    s("beg",
+        fmta(
+            [[
+                \begin{<>}
+                    <>
+                \end{<>}
+            ]],
+            { i(1), i(0), rep(1) }),
             { condition=conds_expand.line_begin }
     ),
 
@@ -59,6 +94,20 @@ ls.add_snippets("tex", {
                 \begin{cases}
                     <>
                 \end{cases}
+            ]],
+            { i(0) }),
+            { condition=math }
+    ),
+    s("scase",
+        fmta(
+            [[
+                \begin{align}
+                \left[
+                \begin{array}{ll}
+                    <>
+                \end{array}
+                \right .
+                \end{align}
             ]],
             { i(0) },
             { condition=math }
@@ -82,7 +131,9 @@ ls.add_snippets("tex", {
     s("!>", t("\\mapsto"), { condition=math }),
 
     s("//", fmta("\\frac{<>}{<>} <>", { i(1), i(2), i(0) }), { condition=math }),
+    s("fak", fmta("\\sfrac{<>}{<>} <>", { i(1), i(2), i(0) }), { condition=math }),
     s("d/dx", fmta("\\frac{\\partial <>}{\\partial <>} <>", { i(1, "u"), i(2, "x"), i(0) }), { condition=math }),
+    s("dsq/dx", fmta("\\frac{\\partial^{2} <>}{\\partial <> \\partial <>} <>", { i(1, "u"), i(2, "x"), i(3, "y"), i(0) }), { condition=math }),
 
     s("ooo", t("\\infty"), { condition=math }),
 
@@ -93,12 +144,20 @@ ls.add_snippets("tex", {
     s("/\\", t("\\setminus"), { condition=math }),
 
     s("RR", t("\\mathbb{R}"), { condition=math }),
+    s("QQ", t("\\mathbb{Q}"), { condition=math }),
     s("CC", t("\\mathbb{C}"), { condition=math }),
     s("ZZ", t("\\mathbb{Z}"), { condition=math }),
     s("NN", t("\\mathbb{N}"), { condition=math }),
 
+    s("in", t("\\in"), { condition=math }),
+    s("notin", t("\\notin"), { condition=math }),
+    s("leq", t("\\leq"), { condition=math }),
+    s("geq", t("\\geq"), { condition=math }),
+    s("tt", fmta("\\text{<>}<>", { i(1), i(0) }), { condition=math }),
+
     s({ trig="sr", wordTrig=false }, t("^2"), { condition=math }),
     s({ trig="cb", wordTrig=false }, t("^3"), { condition=math }),
+    s({ trig="inv", wordTrig=false }, t("^{-1}"), { condition=math }),
     s({ trig="td", wordTrig=false }, fmta("^{<>}<>", { i(1), i(0) }), { condition=math }),
 
     s("fun", fmt("{}: {} \\to {}: {} {}", { i(1, "f"), i(2), i(3), i(4), i(0) }), { condition=math }),
@@ -131,6 +190,22 @@ ls.add_snippets("tex", {
         { condition=math }
     ),
 
+    s({ trig="([bBpvV])mat(%d+)x(%d+)([ar])", regTrig=true, name="matrix"},
+        fmta([[
+        \begin{<>}<>
+        <>
+        \end{<>}]],
+        { f(function(_, snip) return snip.captures[1] .. "matrix" end),
+        f(function(_, snip)
+            if snip.captures[4] == "a" then
+                local out = string.rep("c", tonumber(snip.captures[3]) - 1)
+                return "[" .. out .. "|c]"
+            end
+            return ""
+        end),
+        d(1, mat),
+        f(function(_, snip) return snip.captures[1] .. "matrix" end)}
+        ))
 }, {
     type = "autosnippets",
 })
