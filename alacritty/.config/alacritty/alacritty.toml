@@ -11,3 +11,7 @@ opacity = 1
 
 [font]
 size = 9.5
+
+[font.normal]
+family = "JetBrainsMonoNerdFont"
+style = "Regular"

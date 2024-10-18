@@ -56,8 +56,17 @@ ls.add_snippets("tex", {
             \usepackage{amsmath}
             \usepackage{mathtools}
             \usepackage{tcolorbox}
+            \usepackage{import}
+            \usepackage{xifthen}
+            \usepackage{pdfpages}
+            \usepackage{transparent}
             \usepackage{graphicx}
             \graphicspath{ {./figures} }
+
+            \newcommand{\incfig}[1]{%
+            \def\svgwidth{\columnwidth}
+            \import{./figures/}{#1.pdf_tex}
+            }
 
             \begin{document}
             <>
@@ -66,6 +75,7 @@ ls.add_snippets("tex", {
             { i(0) }),
             { condition=conds_expand.line_begin }
     ),
+
 
     s("beg",
         fmta(
@@ -129,6 +139,7 @@ ls.add_snippets("tex", {
     s({ trig="iff", wordTrig=false }, t("\\iff"), { condition=math }),
     s({ trig="~~", wordTrig=false }, t("\\approx"), { condition=math }),
     s("!>", t("\\mapsto"), { condition=math }),
+    s("**", t("\\cdot"), { condition=math }),
 
     s("//", fmta("\\frac{<>}{<>} <>", { i(1), i(2), i(0) }), { condition=math }),
     s("fak", fmta("\\sfrac{<>}{<>} <>", { i(1), i(2), i(0) }), { condition=math }),

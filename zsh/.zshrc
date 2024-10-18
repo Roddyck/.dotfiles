@@ -107,6 +107,8 @@ export NVM_DIR="$HOME/.nvm"
 # find projects
 bindkey -s ^f "tmux-sessionizer\n"
 
+export XDG_CONFIG_HOME=$HOME/.config
+
 export PATH="/home/rdk/.local/scripts/:$PATH"
 export PATH="/usr/local/go/bin:$PATH"
 export PATH="/home/rdk/TeXmacs/:$PATH"
@@ -139,3 +141,7 @@ alias vim="nvim"
 # Set up fzf key bindings and fuzzy completion
 source /usr/share/doc/fzf/examples/key-bindings.zsh
 source /usr/share/doc/fzf/examples/completion.zsh
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
