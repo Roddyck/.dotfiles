@@ -1,17 +1,17 @@
 import = [
-    #"~/.config/alacritty/themes/tokyo-night.toml"
+    "~/.config/alacritty/themes/tokyo-night.toml"
     #"~/.config/alacritty/themes/tokyo-night-storm.toml"
     #"~/.config/alacritty/themes/dracula.toml"
     #"~/.config/alacritty/themes/ayu_dark.toml"
-    "~/.config/alacritty/themes/catppuccin_mocha.toml"
+    #"~/.config/alacritty/themes/catppuccin_mocha.toml"
 ]
 
 [window]
-opacity = 1
+opacity = 0.70
 
 [font]
 size = 9.5
 
 [font.normal]
-family = "JetBrainsMonoNerdFont"
+family = "JetBrainsMono Nerd Font"
 style = "Regular"
