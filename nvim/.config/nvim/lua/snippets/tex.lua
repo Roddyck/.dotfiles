@@ -177,10 +177,11 @@ ls.add_snippets("tex", {
     s("prod", fmta("\\prod_{i=<>}^{<>} <>", { i(1, "1"), i(2, "\\infty"), i(0)}), { condition=math }),
     s("dint", fmta("\\int_{<>}^{<>} <>", { i(1, "-\\infty"), i(2, "\\infty"), i(0)}), { condition=math }),
     s("sq", fmta("\\sqrt{<>} <>", { i(1), i(0) }), { condition=math }),
+    s("set", fmta("\\{ <> \\ | \\ <> \\}<>", { i(1), i(2), i(0) }), { condition=math}),
 
     s({ trig="__", wordTrig=false}, fmta("_{<>}<>", { i(1), i(0) }), { condition=math }),
 
-    postfix("tilde", { l("\\tilde{" .. l.POSTFIX_MATCH .. "}") }),
+    postfix("tilde", { l("\\widetilde{" .. l.POSTFIX_MATCH .. "}") }),
     postfix("hat", { l("\\hat{" .. l.POSTFIX_MATCH .. "}") }),
     postfix("bar", { l("\\overline{" .. l.POSTFIX_MATCH .. "}") }),
     postfix("under", { l("\\underline{" .. l.POSTFIX_MATCH .. "}") }),
