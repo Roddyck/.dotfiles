@@ -99,20 +99,11 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+source ~/.zsh_profile
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# find projects
-bindkey -s ^f "tmux-sessionizer\n"
-
-export XDG_CONFIG_HOME=$HOME/.config
-
-export PATH="/home/rdk/.local/scripts/:$PATH"
-export PATH="/usr/local/go/bin:$PATH"
-export PATH="/home/rdk/TeXmacs/:$PATH"
-export PATH="/home/rdk/.local/bin:$PATH"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -131,16 +122,6 @@ unset __conda_setup
 
 # Set auto activate conda base by defualt to false
 export CONDA_AUTO_ACTIVATE_BASE=false
-
-fpath+=${ZDOTDIR:-~}/.zsh_functions
-alias air='$(go env GOPATH)/bin/air'
-
-# alias vim to nvim
-alias vim="nvim"
-
-# Set up fzf key bindings and fuzzy completion
-source /usr/share/doc/fzf/examples/key-bindings.zsh
-source /usr/share/doc/fzf/examples/completion.zsh
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"

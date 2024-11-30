@@ -3,8 +3,10 @@ return {
     branch = "harpoon2",
     config = function()
         local harpoon = require "harpoon"
+
         harpoon:setup()
 
+        vim.keymap.set("n", "<leader>A", function() harpoon:list():prepend() end)
         vim.keymap.set("n", "<leader>a", function()
             harpoon:list():add()
         end)
@@ -24,5 +26,18 @@ return {
         vim.keymap.set("n", "<C-m>", function()
             harpoon:list():select(4)
         end)
+        vim.keymap.set("n", "<leader><C-g>", function()
+            harpoon:list():replace_at(1)
+        end)
+        vim.keymap.set("n", "<leader><C-h>", function()
+            harpoon:list():replace_at(2)
+        end)
+        vim.keymap.set("n", "<leader><C-n>", function()
+            harpoon:list():replace_at(3)
+        end)
+        vim.keymap.set("n", "<leader><C-m>", function()
+            harpoon:list():replace_at(4)
+        end)
+
     end,
 }

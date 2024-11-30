@@ -140,6 +140,7 @@ ls.add_snippets("tex", {
     s({ trig="~~", wordTrig=false }, t("\\approx"), { condition=math }),
     s("!>", t("\\mapsto"), { condition=math }),
     s("**", t("\\cdot"), { condition=math }),
+    s("xx", t("\\times"), { condition=math }),
 
     s("//", fmta("\\frac{<>}{<>} <>", { i(1), i(2), i(0) }), { condition=math }),
     s("fak", fmta("\\sfrac{<>}{<>} <>", { i(1), i(2), i(0) }), { condition=math }),
@@ -153,6 +154,9 @@ ls.add_snippets("tex", {
     s("cc", t("\\subset"), { condition=math }),
     s("OO", t("\\varnothing"), { condition=math }),
     s("/\\", t("\\setminus"), { condition=math }),
+    s("UU", t("\\cup"), { condition=math }),
+    s("Nn", t("\\cap"), { condition=math }),
+    s("uuu", fmta("\\bigcup_{<> \\in <>}", { i(1, "i"), i(2, "I") }), { condition=math }),
 
     s("RR", t("\\mathbb{R}"), { condition=math }),
     s("QQ", t("\\mathbb{Q}"), { condition=math }),
@@ -160,11 +164,16 @@ ls.add_snippets("tex", {
     s("ZZ", t("\\mathbb{Z}"), { condition=math }),
     s("NN", t("\\mathbb{N}"), { condition=math }),
 
-    s("in", t("\\in"), { condition=math }),
+    s("inn", t("\\in"), { condition=math }),
     s("notin", t("\\notin"), { condition=math }),
     s("leq", t("\\leq"), { condition=math }),
     s("geq", t("\\geq"), { condition=math }),
-    s("tt", fmta("\\text{<>}<>", { i(1), i(0) }), { condition=math }),
+    s("txt", fmta("\\text{<>}<>", { i(1), i(0) }), { condition=math }),
+
+    s("xii", t("x_i"), { condition=math }),
+    s("yii", t("y_i"), { condition=math }),
+    s("utt", t("u_{tt}"), { condition=math }),
+    s("uxx", t("u_{xx}"), { condition=math }),
 
     s({ trig="sr", wordTrig=false }, t("^2"), { condition=math }),
     s({ trig="cb", wordTrig=false }, t("^3"), { condition=math }),
@@ -179,10 +188,25 @@ ls.add_snippets("tex", {
     s("sq", fmta("\\sqrt{<>} <>", { i(1), i(0) }), { condition=math }),
     s("set", fmta("\\{ <> \\ | \\ <> \\}<>", { i(1), i(2), i(0) }), { condition=math}),
 
+    s("fntop", fmt("{}: {} \\to {} {}",
+        { i(1, "f"), i(2, "(X, \\tau)"), i(3, "(Y, \\omega)"), i(0) }),
+        { condition=math }),
+
     s({ trig="__", wordTrig=false}, fmta("_{<>}<>", { i(1), i(0) }), { condition=math }),
 
+    -- TODO:  Greek letters, maybe need to think about how i do them
+    s("ff", t("\\phi"), { condition=math }),
+    s("yy", t("\\psi"), { condition=math }),
+    s("aa", t("\\alpha"), { condition=math }),
+    s("bb", t("\\beta"), { condition=math }),
+    s("tt", t("\\tau"), { condition=math }),
+    s("qq", t("\\theta"), { condition=math }),
+    s("omm", t("\\omega"), { condition=math }),
+    s("ss", t("\\sigma"), { condition=math }),
+    s("SS", t("\\Sigma"), { condition=math }),
+
     postfix("tilde", { l("\\widetilde{" .. l.POSTFIX_MATCH .. "}") }),
-    postfix("hat", { l("\\hat{" .. l.POSTFIX_MATCH .. "}") }),
+    postfix("hat", { l("\\hat{" .. l.POSTFIX_MATCH .. "}") }, { condition=math }),
     postfix("bar", { l("\\overline{" .. l.POSTFIX_MATCH .. "}") }),
     postfix("under", { l("\\underline{" .. l.POSTFIX_MATCH .. "}") }),
     postfix("vec", { l("\\vec{" .. l.POSTFIX_MATCH .. "}") }),

@@ -11,6 +11,7 @@ config.hide_tab_bar_if_only_one_tab = true
 
 -- For example, changing the color scheme:
 config.color_scheme = 'Tokyo Night'
+--config.color_scheme = 'rose-pine'
 
 config.window_background_opacity = 0.7
 
