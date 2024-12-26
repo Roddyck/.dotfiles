@@ -194,6 +194,20 @@ ls.add_snippets("tex", {
 
     s({ trig="__", wordTrig=false}, fmta("_{<>}<>", { i(1), i(0) }), { condition=math }),
 
+    s("theorem",
+        fmta(
+            [[
+            \begin{tcolorbox}
+                \textbf{\underline{Th}} \\
+                <>
+                \textbf{\underline{Proof}} \\
+                <>
+            \end{tcolorbox}
+            ]],
+            { i(1), i(0) }),
+            { condition=conds_expand.line_begin }
+    ),
+
     -- TODO:  Greek letters, maybe need to think about how i do them
     s("ff", t("\\phi"), { condition=math }),
     s("yy", t("\\psi"), { condition=math }),

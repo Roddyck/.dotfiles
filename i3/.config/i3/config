@@ -189,7 +189,7 @@ bindsym $mod+r mode "resize"
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
-exec_always --no-startup-id feh --bg-max ~/.local/share/anime/pretty-anime-girl.jpeg
+exec_always --no-startup-id feh --bg-max ~/.local/share/anime/arcane-jinx-5.jpg
 # start picom
 exec --no-startup-id picom -b
 
@@ -213,8 +213,3 @@ bindsym Shift+Print exec --no-startup-id maim --select "/home/$USER/Pictures/$(d
 bindsym Ctrl+Print exec --no-startup-id maim | xclip -selection clipboard -t image/png
 bindsym Ctrl+$mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
 bindsym Ctrl+Shift+Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
-
-# Set keyboard layouts and tap hold remap for capslock
-exec_always --no-startup-id setxkbmap -layout prog-qwerty,ru
-exec_always --no-startup-id setxkbmap -option 'grp:win_space_toggle'
-exec_always --no-startup-id setxkbmap -option 'caps:ctrl_modifier' && xcape -e 'Caps_Lock=Escape'

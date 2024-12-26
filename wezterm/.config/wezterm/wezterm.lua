@@ -22,5 +22,7 @@ config.window_padding = {
     bottom = 0,
 }
 
+config.max_fps = 120
+
 -- and finally, return the configuration to wezterm
 return config
