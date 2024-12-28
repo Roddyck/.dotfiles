@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+selected=$(find -maxdepth 1 -type d | fzf --prompt="what do you wanna change again > ")
+selected_name=$(basename $selected)
+
+if [[ $selected_name == "i3" ]] then
+    read -p "i3 or i3 status > " i3_select
+    tmux-sessionizer "i3/.config/$i3_select"
+    exit 0
+fi
+
+if [[ -d "$selected_name/.config" ]] then
+    tmux-sessionizer $selected_name/.config/$selected_name
+    exit 0
+fi
+
+tmux-sessionizer $selected_name

@@ -17,6 +17,20 @@ alias asdf="setxkbmap -layout prog-qwerty,ru && setxkbmap -option 'grp:win_space
 source /usr/share/doc/fzf/examples/key-bindings.zsh
 source /usr/share/doc/fzf/examples/completion.zsh
 
+addToPath() {
+    if [[ "$PATH" != *"$1"* ]]; then
+        export PATH=$PATH:$1
+    fi
+}
+
+addToPathFront() {
+    if [[ "$PATH" != *"$1"* ]]; then
+        export PATH=$1:$PATH
+    fi
+}
+
+addToPathFront $HOME/.zig
+
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 alias air='$(go env GOPATH)/bin/air'
 
