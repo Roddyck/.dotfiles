@@ -1,6 +1,6 @@
 theme = tokyonight
-background = #000000
 background-opacity = 0.60
+background = 000000
 font-family = JetBrainsMono Nerd Font
 
 shell-integration-features = no-cursor,title

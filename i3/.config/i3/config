@@ -13,12 +13,12 @@ set $mod Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 8
+font pango:JetBrainsMono Nerd Font 8
 
 # Turn off boarders
-for_window [class="^.*"] border pixel 1
+for_window [class="^.*"] border pixel 0
                           # class                 border  backgr. text    indicator child_border
-for_window [class="^.*"] client.focused          #a9b665 #285577 #ffffff #2e9ef4   #285577
+for_window [class="^.*"] client.focused          #7aa2f7 #285577 #ffffff #2e9ef4   #285577
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -33,7 +33,7 @@ exec --no-startup-id dex --autostart --environment i3
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork -i ~/.local/share/anime/in-the-rain.png
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -189,9 +189,15 @@ bindsym $mod+r mode "resize"
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
-exec_always --no-startup-id feh --bg-max ~/.local/share/backgrounds/tokyonight.png
+exec_always --no-startup-id feh --bg-max ~/.local/share/anime/tokyonight-girl.jpg
 # start picom
 exec --no-startup-id picom -b
+
+# Adding borders to windows
+exec --no-startup-id $HOME/personal/xborder/xborders -c $HOME/.config/xborders/config.json --disable-version-warning
+
+# start autotiling
+exec --no-startup-id $HOME/personal/autotiling/autotiling
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -209,7 +215,12 @@ bindsym Print exec --no-startup-id maim "/home/$USER/Pictures/$(date +%d-%m-%y).
 bindsym $mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) "/home/$USER/Pictures/$(date +%d-%m-%y).png"
 bindsym Shift+Print exec --no-startup-id maim --select "/home/$USER/Pictures/$(date +%d-%m-%y).png"
 
-## Clipboard Screenshots
+# Clipboard Screenshots
 bindsym Ctrl+Print exec --no-startup-id maim | xclip -selection clipboard -t image/png
 bindsym Ctrl+$mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
 bindsym Ctrl+Shift+Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
+
+# gaps
+gaps inner 10px
+gaps outer 5px
+
