@@ -1,6 +1,6 @@
-partial alphanumeric_keys
+default partial alphanumeric_keys
 xkb_symbols "prog-qwerty" {
-
+    include "us"
     name[Group1]= "English (Programming Qwerty)";
 
     key <TLDE> { [       dollar,        asciitilde, dead_grave, dead_tilde      ] };
