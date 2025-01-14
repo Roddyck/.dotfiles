@@ -15,10 +15,10 @@ set $mod Mod1
 # is used in the bar {} block below.
 font pango:JetBrainsMono Nerd Font 8
 
+#                   title-border    title-background   title-text   indicator     focused-border
+client.focused      #4c7899         #285577            #ffffff      #f7768e       #bb9af7
+
 # Turn off boarders
-# for_window [class="^.*"] border pixel 0
-                          # class                 border  backgr. text    indicator child_border
-for_window [class="^.*"] client.focused          #7aa2f7 #285577 #ffffff #2e9ef4   #285577
 
 default_border pixel 0
 
