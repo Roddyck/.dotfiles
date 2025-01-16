@@ -33,6 +33,7 @@ floating_modifier $mod
 
 # start a terminal
 # bindsym $mod+Return exec i3-sensible-terminal
+
 # ok, wtf sway? why are you making me do that?
 # why does i need to specify full path? I have it in my $PATH
 bindsym $mod+Return exec ~/.local/bin/ghostty
@@ -178,7 +179,7 @@ bar {
      swaybar_command waybar
 }
 
-output * bg ~/.local/share/anime/tokyonight-girl.jpg fill
+output * bg ~/.local/share/anime/Anime-Girl5.png fill
 
 # Use pactl to adjust volume in PulseAudio.
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%

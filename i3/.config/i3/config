@@ -19,10 +19,8 @@ font pango:JetBrainsMono Nerd Font 8
 client.focused      #4c7899         #285577            #ffffff      #f7768e       #bb9af7
 
 # Turn off boarders
+for_window [class="^.*"] border pixel 0
 
-default_border pixel 0
-
-default_floating_border pixel 0
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -194,7 +192,7 @@ bindsym $mod+r mode "resize"
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
-exec_always --no-startup-id feh --bg-max ~/.local/share/anime/tokyonight-girl.jpg
+exec_always --no-startup-id feh --bg-max ~/.local/share/anime/Beer-Girl.png
 # start picom
 exec --no-startup-id picom -b
 
@@ -202,7 +200,7 @@ exec --no-startup-id picom -b
 exec --no-startup-id $HOME/personal/xborder/xborders -c $HOME/.config/xborders/config.json --disable-version-warning
 
 # start autotiling
-exec --no-startup-id $HOME/personal/autotiling/autotiling
+# exec --no-startup-id $HOME/personal/autotiling/autotiling
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -216,9 +214,9 @@ bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +20%
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 20%-
 
 # Screenshots
-bindsym Print exec --no-startup-id maim "/home/$USER/Pictures/$(date +%d-%m-%y).png"
-bindsym $mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) "/home/$USER/Pictures/$(date +%d-%m-%y).png"
-bindsym Shift+Print exec --no-startup-id maim --select "/home/$USER/Pictures/$(date +%d-%m-%y).png"
+bindsym Print exec --no-startup-id maim "/home/$USER/Pictures/$(date +%d-%m-%y-%H:%M:%S).png"
+bindsym $mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) "/home/$USER/Pictures/$(date +%d-%m-%y-%H:%M:%S).png"
+bindsym Shift+Print exec --no-startup-id maim --select "/home/$USER/Pictures/$(date +%d-%m-%y-%H:%M:%S).png"
 
 # Clipboard Screenshots
 bindsym Ctrl+Print exec --no-startup-id maim | xclip -selection clipboard -t image/png
