@@ -19,7 +19,7 @@ set guioptions ""
 # zathurarc-dark
 
 set font "inconsolata 15"
-include catppuccin-mocha
+include rose-pine
 
 unmap f
 map f toggle_fullscreen

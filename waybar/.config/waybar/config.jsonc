@@ -1,7 +1,7 @@
 {
     "modules-left": ["custom/icon", "sway/workspaces", "mpris", "sway/mode"],
     "modules-center": [ "clock"],
-    "modules-right": ["network", "pulseaudio", "memory", "cpu", "temperature", "tray", "custom/notifications"],
+    "modules-right": [ "pulseaudio", "memory", "cpu", "temperature", "tray", "custom/notifications"],
     "disable-click": true,
 
     "tray": {

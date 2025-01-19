@@ -20,7 +20,8 @@ configuration {
 }
 
 /*****----- Global Properties -----*****/
-@import                          "~/.config/rofi/tokyonight.rasi"
+/* @import                          "~/.config/rofi/tokyonight.rasi" */
+@import                          "~/.config/rofi/rose-pine.rasi"
 
 * {
     border-colour:               var(selected);

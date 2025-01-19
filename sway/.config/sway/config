@@ -181,6 +181,8 @@ bar {
 
 output * bg ~/.local/share/anime/Anime-Girl5.png fill
 
+exec swaync
+
 # Use pactl to adjust volume in PulseAudio.
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
@@ -210,7 +212,10 @@ default_border pixel 2
 default_floating_border pixel 2
 
 #                   title-border    title-background   title-text   indicator     focused-border
-client.focused      #4c7899         #285577            #ffffff      #f7768e       #bb9af7
+# client.focused      #4c7899         #285577            #ffffff      #f7768e       #bb9af7
+
+client.focused      #ebbcba         #191724            #e0def4      #ebbcba       #ebbcba
+
 
 # set up keyboard
 # need to think how i wanna do tap-hold caps -> esc - ctrl

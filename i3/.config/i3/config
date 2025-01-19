@@ -16,7 +16,10 @@ set $mod Mod1
 font pango:JetBrainsMono Nerd Font 8
 
 #                   title-border    title-background   title-text   indicator     focused-border
-client.focused      #4c7899         #285577            #ffffff      #f7768e       #bb9af7
+# client.focused      #4c7899         #285577            #ffffff      #f7768e       #bb9af7
+
+#                   title-border    title-background   title-text   indicator     focused-border
+client.focused      #ebbcba         #191724            #e0def4      #ebbcba       #ebbcba
 
 # Turn off boarders
 for_window [class="^.*"] border pixel 0
@@ -192,12 +195,12 @@ bindsym $mod+r mode "resize"
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
-exec_always --no-startup-id feh --bg-max ~/.local/share/anime/Beer-Girl.png
+exec_always --no-startup-id feh --bg-max ~/.local/share/backgrounds/something-beautiful-in-nature.jpg
 # start picom
 exec --no-startup-id picom -b
 
 # Adding borders to windows
-exec --no-startup-id $HOME/personal/xborder/xborders -c $HOME/.config/xborders/config.json --disable-version-warning
+exec --no-startup-id xborders -c $HOME/.config/xborders/config.json --disable-version-warning --smart-hide-border
 
 # start autotiling
 # exec --no-startup-id $HOME/personal/autotiling/autotiling
@@ -224,5 +227,6 @@ bindsym Ctrl+$mod+Print exec --no-startup-id maim --window $(xdotool getactivewi
 bindsym Ctrl+Shift+Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
 
 # gaps
-gaps inner 10px
-gaps outer 5px
+gaps inner 6px
+gaps outer 4px
+smart_gaps on

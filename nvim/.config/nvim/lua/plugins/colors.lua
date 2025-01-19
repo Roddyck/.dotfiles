@@ -18,7 +18,7 @@ return {
                     floats = "dark",   -- style for floating windows
                 },
             })
-        vim.cmd.colorscheme "tokyonight"
+        -- vim.cmd.colorscheme "tokyonight"
         end
     },
 
@@ -84,7 +84,7 @@ return {
         name = "rose-pine",
         config = function()
             require("rose-pine").setup({
-                variant = "moon",
+                variant = "main",
                 disable_background = true,
                 dim_inactive_windows = false,
                 extend_background_behind_borders = true,
@@ -128,7 +128,7 @@ return {
                 },
             })
 
-        -- vim.cmd.colorscheme "rose-pine"
+        vim.cmd.colorscheme "rose-pine"
         end
     }
 }
