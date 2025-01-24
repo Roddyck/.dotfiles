@@ -1,12 +1,14 @@
+@import "./rose-pine.css";
+
 * {
     /* `otf-font-awesome` is required to be installed for icons */
-    border-radius: 20px;
+    border-radius: 12px;
     font-family: JetBrainsMono NFP;
     font-size: 13px;
 }
 
 window#waybar {
-    background-color: rgba(43, 48, 59, 0);
+    background-color: @base;
     /* border-bottom: 3px solid rgba(100, 114, 125, 0.5); */
     color: #ffffff;
     transition-property: background-color;
@@ -40,12 +42,9 @@ button:hover {
 }
 
 #workspaces button {
-    margin: 0 2px;
     padding: 0 5px;
-    color: #24283b;
-    border-radius: 20px;
-    background: rgb(247,118,142);
-    background: linear-gradient(135deg, rgba(247,118,142,1) 0%, rgba(187,154,247,1) 100%);
+    color: @iris;
+    background: @highlightLow;
 
 }
 
@@ -55,13 +54,13 @@ button:hover {
 }
 
 #workspaces button.focused {
-    color: #24283b;
-    background: rgb(42,195,222);
-    background: linear-gradient(135deg, rgba(42,195,222,1) 0%, rgba(187,154,247,1) 75%);
+    color: @rose;
+    background: @highlightLow;
+    border-bottom: 2px solid @rose;
 }
 
 #workspaces button.urgent {
-    background-color: #eb4d4b;
+    background-color: @love;
 }
 
 #mode {
@@ -86,7 +85,7 @@ button:hover {
 #custom-weather,
 #clock,
 #window,
-#custom-icon,
+#custom-icon, 
 
 #workspaces {
     margin: 0 2px;
@@ -107,8 +106,9 @@ button:hover {
     /* background-color: #2ac3de; */
     color: #24283b;
     padding: 0 5px;
-    background: rgb(158,206,106);
-    background: linear-gradient(135deg, rgba(158,206,106,1) 0%, rgba(42,195,222,1) 100%);
+    margin: 2px 0;
+    background: @pine;
+    background: linear-gradient(135deg, @rose 0%, @gold 100%);
 }
 
 #custom-icon {
@@ -120,15 +120,17 @@ button:hover {
 
 #mpris {
     color: #24283b;
-    padding: 0 5px;
+    padding: 0px 5px;
+    margin: 2px 0;
     background: rgb(42,195,222);
-    background: linear-gradient(135deg, rgba(42,195,222,1) 35%, rgba(187,154,247,1) 70%);
+    background: linear-gradient(135deg, @rose 35%, @gold 70%);
 }
 
 #battery {
-    background-color: #f7768e;
+    background-color: @love;
     color: #24283b;
     padding: 0 5px;
+    margin: 2px 2px;
 }
 
 #custom-weather {
@@ -140,19 +142,20 @@ button:hover {
     background: linear-gradient(135deg, rgba(255,158,100,1) 0%, rgba(247,118,142,1) 100%);
 }
 #custom-notifications {
-    margin: 0 2px;
+    margin: 2px 2px;
     padding: 0 0 0 1px;
     color: #24283b;
-    background-color: #bb9af7;
+    background-color: @base;
     min-width: 20px;
     background: rgb(42,195,222);
-    background: linear-gradient(135deg, rgba(42,195,222,1) 0%, rgba(187,154,247,1) 100%);
+    background: linear-gradient(135deg, @foam 0%, @iris 100%);
 }
 
 #battery.charging, #battery.plugged {
     color: #24283b;
     background-color: #bb9af7;
     padding: 0 5px;
+    margin: 2px 2px;
 }
 
 @keyframes blink {
@@ -170,6 +173,7 @@ button:hover {
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-direction: alternate;
+    margin: 2px 2px;
 }
 
 label:focus {
@@ -181,7 +185,8 @@ label:focus {
     color: #24283b;
     padding: 0 5px;
     background: rgb(42,195,222);
-    background: linear-gradient(135deg, rgba(42,195,222,1) 0%, rgba(187,154,247,1) 100%); 
+    background: linear-gradient(135deg, @pine 0%, @iris 100%);
+    margin: 2px 2px;
 }
 
 #memory {
@@ -189,7 +194,8 @@ label:focus {
     color: #24283b;
     padding: 0 5px;
     background: rgb(158,206,106);
-    background: linear-gradient(135deg, rgba(158,206,106,1) 0%, rgba(42,195,222,1) 100%);
+    background: linear-gradient(135deg, @rose 0%, @gold 100%);
+    margin: 2px 2px;
 }
 
 #backlight {
@@ -216,21 +222,23 @@ label:focus {
     background-color: #2ac3de;
     color: #24283b;
     padding: 0 5px;
-    margin: 0 2px;
+    margin: 2px 2px;
     background: rgb(247,118,142);
-    background: linear-gradient(135deg, rgba(247,118,142,1) 0%, rgba(187,154,247,1) 100%);
+    background: linear-gradient(135deg, @pine 0%, @iris 100%);
 }
 
 #pulseaudio.muted {
     background-color: #73daca;
     color: #24283b;
     padding: 0 5px;
+    margin: 2px 2px;
 }
 
 #temperature {
     background-color: #73daca;
     color: #24283b;
     padding: 0 5px;
+    margin: 2px 2px;
     background: rgb(247,118,142);
     background: linear-gradient(135deg, rgba(247,118,142,1) 0%, rgba(187,154,247,1) 100%);
 }
@@ -244,8 +252,9 @@ label:focus {
     background-color: #2980b9;
     color: #24283b;
     padding: 0 5px;
-    background: rgb(247,118,142);
-    background: linear-gradient(135deg, rgba(247,118,142,1) 0%, rgba(187,154,247,1) 100%);
+    margin: 2px 2px;
+    background: @pine;
+    background: linear-gradient(135deg, @iris 0%, @gold 100%);
 }
 
 #tray > .passive {

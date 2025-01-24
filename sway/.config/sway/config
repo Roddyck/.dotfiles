@@ -179,9 +179,9 @@ bar {
      swaybar_command waybar
 }
 
-output * bg ~/.local/share/anime/Anime-Girl5.png fill
+output * bg ~/.local/share/anime/touka.jpg fit
 
-exec swaync
+exec swaync -s $HOME/.config/swaync/rose-pine.css
 
 # Use pactl to adjust volume in PulseAudio.
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
@@ -193,23 +193,22 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +20%
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 20%-
 
-# will i need to redo screenshots configuration on wayland?
 # Screenshots
-bindsym Print exec --no-startup-id maim "/home/$USER/Pictures/$(date +%d-%m-%y).png"
-bindsym $mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) "/home/$USER/Pictures/$(date +%d-%m-%y).png"
-bindsym Shift+Print exec --no-startup-id maim --select "/home/$USER/Pictures/$(date +%d-%m-%y).png"
+bindsym Print exec --no-startup-id grim ~/Pictures/$(date +%F-%R).png
+bindsym Shift+Print exec --no-startup-id grim -g "$(slurp)" ~/Pictures/$(date +%F-%R).png
 
 # Clipboard Screenshots
-bindsym Ctrl+Print exec --no-startup-id maim | xclip -selection clipboard -t image/png
-bindsym Ctrl+$mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
-bindsym Ctrl+Shift+Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
+bindsym Ctrl+Print exec --no-startup-id grim - | wl-copy
+bindsym Ctrl+Shift+Print exec --no-startup-id grim -g "$(slurp)" - | wl-copy
 
 # gaps
-gaps inner 10px
-gaps outer 5px
+gaps inner 6px
+gaps outer 4px
+smart_gaps on
+smart_borders on
 
-default_border pixel 2
-default_floating_border pixel 2
+default_border pixel 1
+default_floating_border pixel 1
 
 #                   title-border    title-background   title-text   indicator     focused-border
 # client.focused      #4c7899         #285577            #ffffff      #f7768e       #bb9af7
@@ -223,7 +222,6 @@ client.focused      #ebbcba         #191724            #e0def4      #ebbcba     
 input type:keyboard {
   xkb_layout "prog-qwerty,ru"
   xkb_options "grp:win_space_toggle"
-  xkb_options "caps:ctrl_modifier"
 }
 
 input type:touchpad {

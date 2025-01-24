@@ -1,9 +1,34 @@
+/**
+ *
+ * Author : Aditya Shakya (adi1090x)
+ * Github : @adi1090x
+ * 
+ * Rofi Theme File
+ * Rofi Version: 1.7.3
+ **/
+
+/*****----- Configuration -----*****/
 configuration {
     show-icons:                 false;
 }
 
 /*****----- Global Properties -----*****/
-@import                          "~/.config/rofi/tokyonight.rasi"
+@import                          "~/.config/rofi/rose-pine.rasi"
+
+* {
+    /* Resolution : 1920x1080 */
+    box-spacing:                 50px;
+    box-margin:                  300px 250px;
+    box-padding:                 50px;
+    message-margin:              0px 400px;
+    inputbar-spacing:            0px;
+    list-spacing:                0px;
+    general-padding:             20px;
+    element-padding:             90px 10px;
+    element-radius:              80px;
+    general-radius:              100%;
+    element-font:                "feather 48";
+}
 
 /*****----- Main Window -----*****/
 window {
@@ -11,8 +36,8 @@ window {
     transparency:                "real";
     location:                    center;
     anchor:                      center;
-    fullscreen:                  false;
-    width:                       605px;
+    fullscreen:                  true;
+    width:                       1366px;
     x-offset:                    0px;
     y-offset:                    0px;
 
@@ -21,7 +46,7 @@ window {
     margin:                      0px;
     padding:                     0px;
     border:                      0px solid;
-    border-radius:               4px;
+    border-radius:               0px;
     border-color:                @selected;
     cursor:                      "default";
     background-color:            @background;
@@ -30,20 +55,20 @@ window {
 /*****----- Main Box -----*****/
 mainbox {
     enabled:                     true;
-    spacing:                     10px;
-    margin:                      0px;
-    padding:                     20px;
+    spacing:                     var(box-spacing);
+    margin:                      var(box-margin);
+    padding:                     var(box-padding);
     border:                      0px solid;
-    border-radius:               0px;
+    border-radius:               var(element-radius);
     border-color:                @selected;
-    background-color:            transparent;
-    children:                    [ "inputbar", "message", "listview" ];
+    background-color:            @background-alt;
+    children:                    [ "inputbar", "listview" ];
 }
 
 /*****----- Inputbar -----*****/
 inputbar {
     enabled:                     true;
-    spacing:                     10px;
+    spacing:                     var(inputbar-spacing);
     margin:                      0px;
     padding:                     0px;
     border:                      0px;
@@ -51,7 +76,7 @@ inputbar {
     border-color:                @selected;
     background-color:            transparent;
     text-color:                  @foreground;
-    children:                    [ "textbox-prompt-colon", dummy, "prompt"];
+    children:                    [ "textbox-prompt-colon", "dummy", "prompt" ];
 }
 
 dummy {
@@ -61,27 +86,27 @@ dummy {
 textbox-prompt-colon {
     enabled:                     true;
     expand:                      false;
-    str:                         "";
-    padding:                     10px 14px;
-    border-radius:               4px;
-    background-color:            @urgent;
-    text-color:                  @background;
+    str:                         "SYSTEM";
+    padding:                     var(general-padding);
+    border-radius:               var(general-radius);
+    background-color:            @background;
+    text-color:                  @urgent;
 }
 prompt {
     enabled:                     true;
-    padding:                     10px;
-    border-radius:               4px;
-    background-color:            @active;
-    text-color:                  @background;
+    padding:                     var(general-padding);
+    border-radius:               var(general-radius);
+    background-color:            @background;
+    text-color:                  @active;
 }
 
 /*****----- Message -----*****/
 message {
     enabled:                     true;
-    margin:                      0px;
-    padding:                     10px;
-    border:                      0px solid;
-    border-radius:               4px;
+    margin:                      var(message-margin);
+    padding:                     var(general-padding);
+    border:                      0px;
+    border-radius:               var(general-radius);
     border-color:                @selected;
     background-color:            @background-alt;
     text-color:                  @foreground;
@@ -96,9 +121,9 @@ textbox {
     markup:                      true;
 }
 error-message {
-    padding:                     10px;
+    padding:                     var(general-padding);
     border:                      0px solid;
-    border-radius:               0px;
+    border-radius:               var(general-radius);
     border-color:                @selected;
     background-color:            @background;
     text-color:                  @foreground;
@@ -117,13 +142,13 @@ listview {
     fixed-height:                true;
     fixed-columns:               true;
     
-    spacing:                     10px;
+    spacing:                     var(list-spacing);
     margin:                      0px;
     padding:                     0px;
     border:                      0px solid;
-    border-radius:               0px;
+    border-radius:               var(element-radius);
     border-color:                @selected;
-    background-color:            transparent;
+    background-color:            @background;
     text-color:                  @foreground;
     cursor:                      "default";
 }
@@ -133,15 +158,16 @@ element {
     enabled:                     true;
     spacing:                     0px;
     margin:                      0px;
-    padding:                     10px;
+    padding:                     var(element-padding);
     border:                      0px solid;
-    border-radius:               4px;
+    border-radius:               var(element-radius);
     border-color:                @selected;
-    background-color:            @background-alt;
+    background-color:            transparent;
     text-color:                  @foreground;
     cursor:                      pointer;
 }
 element-text {
+    font:                        var(element-font);
     background-color:            transparent;
     text-color:                  inherit;
     cursor:                      inherit;
@@ -149,8 +175,6 @@ element-text {
     horizontal-align:            0.5;
 }
 element selected.normal {
-    border:                      0px 2px 0px 2px;
-    border-radius:               4px;
     background-color:            var(selected);
     text-color:                  var(background);
 }

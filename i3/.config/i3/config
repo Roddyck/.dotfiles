@@ -195,12 +195,15 @@ bindsym $mod+r mode "resize"
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
-exec_always --no-startup-id feh --bg-max ~/.local/share/backgrounds/something-beautiful-in-nature.jpg
+exec_always --no-startup-id feh --bg-scale ~/.local/share/anime/Anime-Girl5.png
 # start picom
 exec --no-startup-id picom -b
 
+# start dunst
+exec --no-startup-id dunst
+
 # Adding borders to windows
-exec --no-startup-id xborders -c $HOME/.config/xborders/config.json --disable-version-warning --smart-hide-border
+exec --no-startup-id $HOME/personal/xborder/xborders -c $HOME/.config/xborders/config.json --disable-version-warning --smart-hide-border
 
 # start autotiling
 # exec --no-startup-id $HOME/personal/autotiling/autotiling

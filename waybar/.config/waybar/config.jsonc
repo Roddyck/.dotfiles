@@ -1,12 +1,20 @@
 {
-    "modules-left": ["custom/icon", "sway/workspaces", "mpris", "sway/mode"],
+    "layer": "top",
+    //"position": "bottom",
+    "height": 20,
+    "modules-left": ["sway/workspaces", "mpris", "sway/mode"],
     "modules-center": [ "clock"],
-    "modules-right": [ "pulseaudio", "memory", "cpu", "temperature", "tray", "custom/notifications"],
+    "modules-right": [ "pulseaudio", "memory", "cpu", "battery", "tray", "custom/notifications"],
     "disable-click": true,
 
     "tray": {
         // "icon-size": 21,
         "spacing": 10
+    },
+
+    "battery": {
+        "format": "{capacity}% {icon}",
+        "format-icons": ["󰁻", "󰁽", "󰁿", "󰂁", "󱟢"]
     },
 
     "mpris": {
