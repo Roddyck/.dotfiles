@@ -6,22 +6,34 @@ Contains my dotfiles
 
 ### Git
 
+On ubuntu:
+```bash
+sudo apt install git
 ```
-sudo apt-get install git-all
+
+On arch:
+```bash
+pacman -S git
 ```
 
 ### Stow
 
-```
+On ubuntu:
+```bash
 sudo apt install stow
+```
+
+On arch:
+```bash
+pacman -S stow
 ```
 
 ## Installation
 
 First, clone repo into $HOME directory
 
-```
-$ git clone git@github.com:Roddyck/.dotfiles.git
+```bash
+$ git clone https://github.com/Roddyck/.dotfiles.git
 $ cd .dotfiles
 ```
 
