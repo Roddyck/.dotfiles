@@ -22,7 +22,7 @@ font pango:JetBrainsMono Nerd Font 8
 client.focused      #ebbcba         #191724            #e0def4      #ebbcba       #ebbcba
 
 # Turn off boarders
-for_window [class="^.*"] border pixel 0
+for_window [class="^.*"] border pixel 2
 
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
@@ -195,7 +195,7 @@ bindsym $mod+r mode "resize"
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
-exec_always --no-startup-id feh --bg-scale ~/.local/share/anime/Anime-Girl5.png
+exec_always --no-startup-id feh --bg-max ~/.local/share/wallpapers/Beer-Girl.png
 # start picom
 exec --no-startup-id picom -b
 
@@ -203,7 +203,7 @@ exec --no-startup-id picom -b
 exec --no-startup-id dunst
 
 # Adding borders to windows
-exec --no-startup-id $HOME/personal/xborder/xborders -c $HOME/.config/xborders/config.json --disable-version-warning --smart-hide-border
+# exec --no-startup-id $HOME/personal/xborder/xborders -c $HOME/.config/xborders/config.json --disable-version-warning --smart-hide-border
 
 # start autotiling
 # exec --no-startup-id $HOME/personal/autotiling/autotiling
@@ -233,3 +233,4 @@ bindsym Ctrl+Shift+Print exec --no-startup-id maim --select | xclip -selection c
 gaps inner 6px
 gaps outer 4px
 smart_gaps on
+smart_borders on

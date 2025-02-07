@@ -8,7 +8,7 @@
 }
 
 window#waybar {
-    background-color: @base;
+    background-color: rgba(25, 23, 36, 0.5);
     /* border-bottom: 3px solid rgba(100, 114, 125, 0.5); */
     color: #ffffff;
     transition-property: background-color;
@@ -42,10 +42,10 @@ button:hover {
 }
 
 #workspaces button {
+    margin: 0 2px;
     padding: 0 5px;
-    color: @iris;
-    background: @highlightLow;
-
+    color: @text;
+    background: transparent;
 }
 
 #workspaces button:hover {
@@ -53,10 +53,10 @@ button:hover {
     box-shadow: inset 0 0px rgba(0, 0, 0, 0.0)
 }
 
-#workspaces button.focused {
+#workspaces button.active {
     color: @rose;
-    background: @highlightLow;
-    border-bottom: 2px solid @rose;
+    background: @highlightMed;
+    border-radius: 5px;
 }
 
 #workspaces button.urgent {
@@ -88,12 +88,14 @@ button:hover {
 #custom-icon, 
 
 #workspaces {
-    margin: 0 2px;
+    margin: 0px 2px;
+    border-radius: 12px;
+    background: @base;
 }
 
 /* If workspaces is the leftmost module, omit left margin */
 .modules-left > widget:first-child > #workspaces {
-    margin-left: 0;
+    margin-left: 6px;
 }
 
 /* If workspaces is the rightmost module, omit right margin */
@@ -106,7 +108,7 @@ button:hover {
     /* background-color: #2ac3de; */
     color: #24283b;
     padding: 0 5px;
-    margin: 2px 0;
+    margin: 0px 0;
     background: @pine;
     background: linear-gradient(135deg, @rose 0%, @gold 100%);
 }
@@ -130,7 +132,7 @@ button:hover {
     background-color: @love;
     color: #24283b;
     padding: 0 5px;
-    margin: 2px 2px;
+    margin: 0px 0px;
 }
 
 #custom-weather {
@@ -142,7 +144,7 @@ button:hover {
     background: linear-gradient(135deg, rgba(255,158,100,1) 0%, rgba(247,118,142,1) 100%);
 }
 #custom-notifications {
-    margin: 2px 2px;
+    margin: 2px 6px;
     padding: 0 0 0 1px;
     color: #24283b;
     background-color: @base;
@@ -155,7 +157,7 @@ button:hover {
     color: #24283b;
     background-color: #bb9af7;
     padding: 0 5px;
-    margin: 2px 2px;
+    margin: 0px 2px;
 }
 
 @keyframes blink {
@@ -173,7 +175,7 @@ button:hover {
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-direction: alternate;
-    margin: 2px 2px;
+    margin: 0px 2px;
 }
 
 label:focus {
@@ -186,7 +188,7 @@ label:focus {
     padding: 0 5px;
     background: rgb(42,195,222);
     background: linear-gradient(135deg, @pine 0%, @iris 100%);
-    margin: 2px 2px;
+    margin: 0px 2px;
 }
 
 #memory {
@@ -195,7 +197,7 @@ label:focus {
     padding: 0 5px;
     background: rgb(158,206,106);
     background: linear-gradient(135deg, @rose 0%, @gold 100%);
-    margin: 2px 2px;
+    margin: 0px 2px;
 }
 
 #backlight {
@@ -222,7 +224,7 @@ label:focus {
     background-color: #2ac3de;
     color: #24283b;
     padding: 0 5px;
-    margin: 2px 2px;
+    margin: 0px 2px;
     background: rgb(247,118,142);
     background: linear-gradient(135deg, @pine 0%, @iris 100%);
 }
@@ -231,14 +233,14 @@ label:focus {
     background-color: #73daca;
     color: #24283b;
     padding: 0 5px;
-    margin: 2px 2px;
+    margin: 0px 2px;
 }
 
 #temperature {
     background-color: #73daca;
     color: #24283b;
     padding: 0 5px;
-    margin: 2px 2px;
+    margin: 0px 2px;
     background: rgb(247,118,142);
     background: linear-gradient(135deg, rgba(247,118,142,1) 0%, rgba(187,154,247,1) 100%);
 }
@@ -252,7 +254,7 @@ label:focus {
     background-color: #2980b9;
     color: #24283b;
     padding: 0 5px;
-    margin: 2px 2px;
+    margin: 0px 2px;
     background: @pine;
     background: linear-gradient(135deg, @iris 0%, @gold 100%);
 }

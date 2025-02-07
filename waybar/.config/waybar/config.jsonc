@@ -1,8 +1,8 @@
 {
     "layer": "top",
-    //"position": "bottom",
-    "height": 20,
-    "modules-left": ["sway/workspaces", "mpris", "sway/mode"],
+    "position": "bottom",
+    "height": 24,
+    "modules-left": ["hyprland/workspaces","mpris",],
     "modules-center": [ "clock"],
     "modules-right": [ "pulseaudio", "memory", "cpu", "battery", "tray", "custom/notifications"],
     "disable-click": true,
@@ -102,7 +102,7 @@
         "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +1%",
         "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -1%",
         "format": "{volume}% {icon}  {format_source}",
-        "format-muted": " {format_source}",
+        "format-muted": " {format_source}",
         "format-source": "{volume}% ",
         "format-source-muted": "",
         "format-icons": {
