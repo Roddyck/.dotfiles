@@ -2,7 +2,7 @@
 
 * {
     /* `otf-font-awesome` is required to be installed for icons */
-    border-radius: 12px;
+    border-radius: 10px;
     font-family: JetBrainsMono NFP;
     font-size: 13px;
 }
@@ -89,7 +89,6 @@ button:hover {
 
 #workspaces {
     margin: 0px 2px;
-    border-radius: 12px;
     background: @base;
 }
 
