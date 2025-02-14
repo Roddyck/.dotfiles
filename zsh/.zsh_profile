@@ -1,20 +1,5 @@
-export XDG_CONFIG_HOME=$HOME/.config
-
-export PATH="/home/roddyk/.local/scripts/:$PATH"
-export PATH="/usr/local/go/bin:$PATH"
-export PATH="/home/roddyk/TeXmacs/:$PATH"
-export PATH="/home/roddyk/.local/bin:$PATH"
-
-# alias vim to nvim
-alias vim="nvim"
-
-alias tmux="tmux -2"
-
-alias asdf="setxkbmap -layout prog-qwerty,ru && setxkbmap -option 'grp:win_space_toggle' && setxkbmap -option 'caps:ctrl_modifier' && xcape -e 'Caps_Lock=Escape'"
-
 # Enable colors
 autoload -U colors && colors
-
 
 # History in cache directory:
 HISTSIZE=1000
@@ -29,7 +14,6 @@ zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 
 zmodload zsh/complist
 compinit
 _comp_options+=(globdots)		# Include hidden files
-
 
 # vi mode
 bindkey -v
@@ -51,6 +35,26 @@ bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -v '^?' backward-delete-char
+
+# ENV
+export XDG_CONFIG_HOME=$HOME/.config
+
+export PATH="/home/roddyk/.local/scripts/:$PATH"
+export PATH="/usr/local/go/bin:$PATH"
+export PATH="/home/roddyk/TeXmacs/:$PATH"
+export PATH="/home/roddyk/.local/bin:$PATH"
+
+alias vim="nvim"
+alias tmux="tmux -2"
+alias asdf="setxkbmap -layout prog-qwerty,ru && setxkbmap -option 'grp:win_space_toggle' && setxkbmap -option 'caps:ctrl_modifier' && xcape -e 'Caps_Lock=Escape'"
+
+alias ls="ls --color=tty"
+alias lsa="ls -lah"
+
+alias g="git"
+alias gc="git commit"
+alias ga="git add"
+alias gst="git status"
 
 # find projects
 bindkey -s ^f "tmux-sessionizer\n"
@@ -79,6 +83,7 @@ alias air='$(go env GOPATH)/bin/air'
 #--color=marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
 #--multi"
 
+# fzf rose-pine
 export FZF_DEFAULT_OPTS="
 	--color=fg:#908caa,bg:#191724,hl:#ebbcba
 	--color=fg+:#e0def4,bg+:#26233a,hl+:#ebbcba

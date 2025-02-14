@@ -22,6 +22,8 @@ unset __conda_setup
 # Set auto activate conda base by defualt to false
 export CONDA_AUTO_ACTIVATE_BASE=false
 
+source $HOME/personal/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
