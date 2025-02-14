@@ -1,8 +1,5 @@
 export XDG_CONFIG_HOME=$HOME/.config
 
-# find projects
-bindkey -s ^f "tmux-sessionizer\n"
-
 export PATH="/home/roddyk/.local/scripts/:$PATH"
 export PATH="/usr/local/go/bin:$PATH"
 export PATH="/home/roddyk/TeXmacs/:$PATH"
@@ -14,6 +11,49 @@ alias vim="nvim"
 alias tmux="tmux -2"
 
 alias asdf="setxkbmap -layout prog-qwerty,ru && setxkbmap -option 'grp:win_space_toggle' && setxkbmap -option 'caps:ctrl_modifier' && xcape -e 'Caps_Lock=Escape'"
+
+# Enable colors
+autoload -U colors && colors
+
+
+# History in cache directory:
+HISTSIZE=1000
+SAVEHIST=1000
+HISTFILE=~/.zsh_history
+
+# Basic auto/tab complete:
+autoload -U compinit && compinit -u
+zstyle ':completion:*' menu select
+# Auto complete with case insenstivity
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+zmodload zsh/complist
+compinit
+_comp_options+=(globdots)		# Include hidden files
+
+
+# vi mode
+bindkey -v
+export KEYTIMEOUT=1
+
+# Enable searching through history
+bindkey '^R' history-incremental-pattern-search-backward
+
+# search based on entered text
+autoload -U history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey "^[[A" history-beginning-search-backward-end
+bindkey "^[[B" history-beginning-search-forward-end
+
+# Use vim keys in tab complete menu:
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+bindkey -v '^?' backward-delete-char
+
+# find projects
+bindkey -s ^f "tmux-sessionizer\n"
 
 addToPath() {
     if [[ "$PATH" != *"$1"* ]]; then

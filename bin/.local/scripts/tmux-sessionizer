@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 switch_to() {
     if [[ -z $TMUX ]]; then
         tmux attach-session -t $1
@@ -13,16 +13,16 @@ has_session() {
 
 hydrate() {
     if [ -f $2/.tmux-sessionizer ]; then
-        tmux send-keys -t $1 "source $2/.tmux-sessionizer" c-M
+        tmux send-keys -t $1 "source $2/.tmux-sessionizer" ^M
     elif [ -f $HOME/.tmux-sessionizer ]; then
-        tmux send-keys -t $1 "source $HOME/.tmux-sessionizer" c-M
+        tmux send-keys -t $1 "source $HOME/.tmux-sessionizer" ^M
     fi
 }
 
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find ~/ -mindepth 1 -maxdepth 1 -type d | fzf)
+    selected=$(find ~/ ~/lections/* ~/personal -mindepth 1 -maxdepth 1 -type d | fzf)
 fi
 
 if [[ -z $selected ]]; then
