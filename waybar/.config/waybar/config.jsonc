@@ -2,7 +2,7 @@
     "layer": "top",
     "position": "bottom",
     "height": 24,
-    "modules-left": ["hyprland/workspaces","mpris",],
+    "modules-left": ["custom/icon", "hyprland/workspaces","mpris",],
     "modules-center": [ "clock"],
     "modules-right": [ "pulseaudio", "memory", "cpu", "battery", "tray", "custom/notifications"],
     "disable-click": true,
@@ -28,7 +28,7 @@
     },
 
     "custom/icon": {
-        "format": "<span font_family='Material Icons' rise='-4000' size='large'>󰂧 </span>",
+        "format": "<span font_family='Material Icons' rise='-4000' size='large'>󰣇 </span>",
     },
 
     "custom/weather": {

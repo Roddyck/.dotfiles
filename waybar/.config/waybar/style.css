@@ -8,7 +8,7 @@
 }
 
 window#waybar {
-    background-color: rgba(25, 23, 36, 0.5);
+    background-color: rgba(25, 23, 36, 0.0);
     /* border-bottom: 3px solid rgba(100, 114, 125, 0.5); */
     color: #ffffff;
     transition-property: background-color;
@@ -42,20 +42,16 @@ button:hover {
 }
 
 #workspaces button {
-    margin: 0 2px;
-    padding: 0 5px;
+    margin: 0 0px;
+    padding: 0 6px;
     color: @text;
     background: transparent;
-}
-
-#workspaces button:hover {
-    background: rgba(0, 0, 0, 0.6);
-    box-shadow: inset 0 0px rgba(0, 0, 0, 0.0)
+    border-radius: 5px;
 }
 
 #workspaces button.active {
     color: @rose;
-    background: @highlightMed;
+    background-color: @pine;
     border-radius: 5px;
 }
 
@@ -70,26 +66,10 @@ button:hover {
     background: linear-gradient(135deg, rgba(247,118,142,1) 0%, rgba(187,154,247,1) 100%);
 }
 
-#clock,
-#battery,
-#cpu,
-#memory,
-#temperature,
-#backlight,
-#network,
-#pulseaudio,
-#tray,
-#mode,
-#scratchpad,
-#custom-notifications,
-#custom-weather,
-#clock,
-#window,
-#custom-icon, 
-
 #workspaces {
-    margin: 0px 2px;
+    margin: 0px 4px;
     background: @base;
+    border-radius: 5px;
 }
 
 /* If workspaces is the leftmost module, omit left margin */
@@ -109,22 +89,23 @@ button:hover {
     padding: 0 5px;
     margin: 0px 0;
     background: @pine;
-    background: linear-gradient(135deg, @rose 0%, @gold 100%);
+    background: linear-gradient(135deg, @rose 0%, @love 100%);
 }
 
 #custom-icon {
     color: #24283b;
-    padding: 0 5px;
+    margin-left: 6px;
+    padding-left: 5px;
     background: rgb(42,195,222);
-    background: linear-gradient(135deg, rgba(42,195,222,1) 0%, rgba(187,154,247,1) 100%); 
+    background: linear-gradient(135deg, @rose 0%, @love 100%); 
 }
 
 #mpris {
     color: #24283b;
     padding: 0px 5px;
-    margin: 2px 0;
+    margin: 2px 2px;
     background: rgb(42,195,222);
-    background: linear-gradient(135deg, @rose 35%, @gold 70%);
+    background: linear-gradient(135deg, @rose 35%, @love 70%);
 }
 
 #battery {
@@ -195,7 +176,7 @@ label:focus {
     color: #24283b;
     padding: 0 5px;
     background: rgb(158,206,106);
-    background: linear-gradient(135deg, @rose 0%, @gold 100%);
+    background: linear-gradient(135deg, @rose 0%, @love 100%);
     margin: 0px 2px;
 }
 
