@@ -1,0 +1,72 @@
+#!/usr/bin/env bash
+
+# Flags:
+# r: region
+# c: clipboard
+#
+# default is full screen capture without saving to clipboard
+
+CLIPBOARD=0
+REGION=0
+
+NOTIF_TIMEOUT=5000
+SAVEDIR="$HOME/Pictures"
+FILENAME="$(date +'%d-%m-%Y-%H:%M:%S').png"
+SAVE_FULLPATH="$SAVEDIR/$FILENAME"
+
+while getopts "cr" flag; do
+    case "${flag}" in 
+        c)
+            CLIPBOARD=1
+            ;;
+
+        r)
+            REGION=1
+            ;;
+    esac
+done
+
+send_notification() {
+    local message=""
+    if [ $CLIPBOARD -eq 1 ]; then
+        message="Image copied to the clipboard."
+        notify-send "Screenshot taken" "$message" -t $NOTIF_TIMEOUT
+    else
+        message="Image saved in $1"
+        notify-send "Screenshot taken" "$message" -t $NOTIF_TIMEOUT -i "$1"
+    fi
+}
+
+screenshot_monitor() {
+    if [ $CLIPBOARD -eq 0 ]; then
+        grim "$SAVE_FULLPATH"
+        output="$SAVE_FULLPATH"
+    else
+        grim - | wl-copy
+    fi
+
+    send_notification $output
+}
+
+screenshot_region() {
+    local area=$(slurp)
+    if [ -z $area ]; then
+        notify-send "area was not selected"
+        exit 1
+    fi
+
+    if [ $CLIPBOARD -eq 0 ]; then
+        grim -g "$area" "$SAVE_FULLPATH"
+        output="$SAVE_FULLPATH"
+    else
+        grim -g "$area" - | wl-copy
+    fi
+
+    send_notification $output
+}
+
+if [ $REGION -eq 0 ]; then
+    screenshot_monitor
+else
+    screenshot_region
+fi
