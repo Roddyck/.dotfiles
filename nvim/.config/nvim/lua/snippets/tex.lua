@@ -54,6 +54,7 @@ ls.add_snippets("tex", {
             \usepackage{indentfirst}
             \usepackage{amssymb}
             \usepackage{amsmath}
+            \usepackage{amsthm}
             \usepackage{mathtools}
             \usepackage{tcolorbox}
             \usepackage{import}
@@ -67,6 +68,11 @@ ls.add_snippets("tex", {
             \def\svgwidth{\columnwidth}
             \import{./figures/}{#1.pdf_tex}
             }
+
+            \newtheorem*{theorem}{Теорема}
+
+            \theoremstyle{definition}
+            \newtheorem*{definition}{Определение}
 
             \begin{document}
             <>

@@ -1,40 +1,40 @@
 #!/usr/bin/env bash
 
 # Flags:
-# r: region
-# c: clipboard
+# r: select region
+# w: screenshot active window
+# c: save to clipboard
 #
 # default is full screen capture without saving to clipboard
 
-CLIPBOARD=0
-REGION=0
+OPTION=monitor
 
 NOTIF_TIMEOUT=5000
 SAVEDIR="$HOME/Pictures"
 FILENAME="$(date +'%d-%m-%Y-%H:%M:%S').png"
 SAVE_FULLPATH="$SAVEDIR/$FILENAME"
 
-while getopts "cr" flag; do
+while getopts "crw" flag; do
     case "${flag}" in 
         c)
             CLIPBOARD=1
             ;;
-
         r)
-            REGION=1
+            OPTION=region
             ;;
+        w)
+            OPTION=window
     esac
 done
 
 send_notification() {
-    local message=""
-    if [ $CLIPBOARD -eq 1 ]; then
-        message="Image copied to the clipboard."
-        notify-send "Screenshot taken" "$message" -t $NOTIF_TIMEOUT
-    else
-        message="Image saved in $1"
-        notify-send "Screenshot taken" "$message" -t $NOTIF_TIMEOUT -i "$1"
-    fi
+    local message=$([ $CLIPBOARD -eq 1 ] && \
+        echo "Image copied to the clipboard" || \
+        echo "Image saved in <i>${1}</i>.")
+    echo $message
+    
+    [ $CLIPBOARD -eq 1 ] && notify-send "Screenshot taken" "$message" -t $NOTIF_TIMEOUT || \
+    notify-send "Screenshot taken" "$message" -t $NOTIF_TIMEOUT -i "$1"
 }
 
 screenshot_monitor() {
@@ -50,10 +50,7 @@ screenshot_monitor() {
 
 screenshot_region() {
     local area=$(slurp)
-    if [ -z $area ]; then
-        notify-send "area was not selected"
-        exit 1
-    fi
+    [ -z $area ] && notify-send "area was not selected" -t $NOTIF_TIMEOUT && exit 1
 
     if [ $CLIPBOARD -eq 0 ]; then
         grim -g "$area" "$SAVE_FULLPATH"
@@ -65,8 +62,18 @@ screenshot_region() {
     send_notification $output
 }
 
-if [ $REGION -eq 0 ]; then
-    screenshot_monitor
-else
-    screenshot_region
-fi
+screenshot_window() {
+    local geom=$(hyprctl -j activewindow | jq -r '"\(.at[0]),\(.at[1]) \(.size[0])x\(.size[1])"')
+    if [ $CLIPBOARD -eq 0 ]; then
+        grim -g "$geom" "$SAVE_FULLPATH"
+        output="$SAVE_FULLPATH"
+    else
+        grim -g "$geom" - | wl-copy
+    fi
+
+    send_notification $output
+}
+
+[ $OPTION = 'monitor' ] && screenshot_monitor && exit 0
+[ $OPTION = 'region' ] && screenshot_region && exit 0
+[ $OPTION = 'window' ] && screenshot_window && exit 0
