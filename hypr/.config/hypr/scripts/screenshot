@@ -8,6 +8,7 @@
 # default is full screen capture without saving to clipboard
 
 OPTION=monitor
+CLIPBOARD=0
 
 NOTIF_TIMEOUT=5000
 SAVEDIR="$HOME/Pictures"

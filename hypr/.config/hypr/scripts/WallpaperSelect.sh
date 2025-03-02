@@ -5,7 +5,6 @@ terminal=ghostty
 
 wallDIR="$HOME/.local/share/wallpapers"
 SCRIPTSDIR="$HOME/.config/hypr/scripts"
-wallpaper_current="$HOME/.config/hypr/wallpaper_effects/.wallpaper_current"
 
 # Directory for swaync
 iDIR="$HOME/.config/swaync/images"
@@ -28,9 +27,6 @@ fi
 # Retrieve image files using null delimiter to handle spaces in filenames
 mapfile -d '' PICS < <(find "${wallDIR}" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.pnm" -o -iname "*.tga" -o -iname "*.tiff" -o -iname "*.webp" -o -iname "*.bmp" -o -iname "*.farbfeld" -o -iname "*.png" -o -iname "*.gif" \) -print0)
 
-RANDOM_PIC="${PICS[$((RANDOM % ${#PICS[@]}))]}"
-RANDOM_PIC_NAME=". random"
-
 # Rofi command
 rofi_command="rofi -i -show -dmenu -config ~/.config/rofi/config-wallpaper.rasi"
 
@@ -38,9 +34,6 @@ rofi_command="rofi -i -show -dmenu -config ~/.config/rofi/config-wallpaper.rasi"
 menu() {
   # Sort the PICS array
   IFS=$'\n' sorted_options=($(sort <<<"${PICS[*]}"))
-  
-  # Place ". random" at the beginning with the random picture as an icon
-  printf "%s\x00icon\x1f%s\n" "$RANDOM_PIC_NAME" "$RANDOM_PIC"
   
   for pic_path in "${sorted_options[@]}"; do
     pic_name=$(basename "$pic_path")

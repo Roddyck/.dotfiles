@@ -74,6 +74,8 @@ ls.add_snippets("tex", {
             \theoremstyle{definition}
             \newtheorem*{definition}{Определение}
 
+            \renewcommand\qedsymbol{$\blacksquare$}
+
             \begin{document}
             <>
             \end{document}

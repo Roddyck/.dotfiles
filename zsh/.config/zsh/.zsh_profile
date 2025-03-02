@@ -1,10 +1,11 @@
 # Enable colors
 autoload -U colors && colors
+source ~/.zshenv
 
 # History in cache directory:
 HISTSIZE=1000
 SAVEHIST=1000
-HISTFILE=~/.zsh_history
+HISTFILE=~/.cache/zsh/history
 
 # Basic auto/tab complete:
 autoload -U compinit && compinit -u
@@ -37,8 +38,6 @@ bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -v '^?' backward-delete-char
 
 # ENV
-export XDG_CONFIG_HOME=$HOME/.config
-
 export PATH="/home/roddyk/.local/scripts/:$PATH"
 export PATH="/usr/local/go/bin:$PATH"
 export PATH="/home/roddyk/TeXmacs/:$PATH"
