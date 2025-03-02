@@ -8,6 +8,19 @@ console_title_template = '{{ .Shell }} in {{ .Folder }}'
   newline = true
 
   [[blocks.segments]]
+    type = "python"
+    style = "plain"
+    background = "transparent"
+    foreground = "white"
+    template = '{{ if .Venv }}({{ .Venv }}) {{ end }}'
+
+  [blocks.segments.properties]
+    display_mode = 'environment'
+    display_default = true
+    fetch_virtual_env = true
+    home_enabled = true
+
+  [[blocks.segments]]
     type = 'path'
     style = 'plain'
     background = 'transparent'
@@ -16,6 +29,7 @@ console_title_template = '{{ .Shell }} in {{ .Folder }}'
 
     [blocks.segments.properties]
       style = 'folder'
+
 
   [[blocks.segments]]
     type = 'git'
