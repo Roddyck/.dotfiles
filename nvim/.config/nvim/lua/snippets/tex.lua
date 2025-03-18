@@ -64,15 +64,24 @@ ls.add_snippets("tex", {
             \usepackage{graphicx}
             \graphicspath{ {./figures} }
 
+            \DeclarePairedDelimiter\set\{\}
+
             \newcommand{\incfig}[1]{%
             \def\svgwidth{\columnwidth}
             \import{./figures/}{#1.pdf_tex}
             }
 
             \newtheorem*{theorem}{Теорема}
+            \newtheorem*{statement}{Утверждение}
+            \newtheorem*{lemma}{Лемма}
+            \newtheorem*{proposal}{Предложение}
+
 
             \theoremstyle{definition}
             \newtheorem*{definition}{Определение}
+
+            \theoremstyle{remark}
+            \newtheorem*{remark}{Замечание}
 
             \renewcommand\qedsymbol{$\blacksquare$}
 
@@ -194,7 +203,6 @@ ls.add_snippets("tex", {
     s("prod", fmta("\\prod_{i=<>}^{<>} <>", { i(1, "1"), i(2, "\\infty"), i(0)}), { condition=math }),
     s("dint", fmta("\\int_{<>}^{<>} <>", { i(1, "-\\infty"), i(2, "\\infty"), i(0)}), { condition=math }),
     s("sq", fmta("\\sqrt{<>} <>", { i(1), i(0) }), { condition=math }),
-    s("set", fmta("\\{ <> \\ | \\ <> \\}<>", { i(1), i(2), i(0) }), { condition=math}),
 
     s("fntop", fmt("{}: {} \\to {} {}",
         { i(1, "f"), i(2, "(X, \\tau)"), i(3, "(Y, \\omega)"), i(0) }),
@@ -220,10 +228,11 @@ ls.add_snippets("tex", {
     postfix("under", { l("\\underline{" .. l.POSTFIX_MATCH .. "}") }),
     postfix("vec", { l("\\vec{" .. l.POSTFIX_MATCH .. "}") }),
 
-    s({ trig='(%a)(%d)', regTrig=true, name='auto subscript', dscr='auto subscript'},
-        fmt([[<>_<>]],
+    s({ trig='(\\?)(%a+)(%d)', regTrig=true, name='auto subscript', dscr='auto subscript'},
+        fmt([[<><>_<>]],
         { f(function(_, snip) return snip.captures[1] end),
-        f(function(_, snip) return snip.captures[2] end) },
+        f(function(_, snip) return snip.captures[2] end),
+        f(function(_, snip) return snip.captures[3] end) },
         { delimiters='<>' }),
         { condition=math }
     ),

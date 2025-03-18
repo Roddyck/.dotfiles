@@ -877,7 +877,6 @@ _comps=(
 'oggdec' '_vorbis'
 'oggenc' '_vorbis'
 'ogginfo' '_vorbis'
-'oh-my-posh' '_oh-my-posh'
 'oksh' '_sh'
 'okular' '_okular'
 'oomctl' '_oomctl'
@@ -905,6 +904,7 @@ _comps=(
 '-parameter-' '_parameter'
 'parec' '_pulseaudio'
 'parecord' '_pulseaudio'
+'pass' '_pass'
 'passwd' '_users'
 'paste' '_paste'
 'pasuspender' '_pulseaudio'
@@ -1697,7 +1697,7 @@ autoload -Uz _bootctl _busctl _coredumpctl _curl _dkms \
             _journalctl _kde-inhibit _kernel-install _kitty _konsole \
             _krunner _kscreen-doctor _libinput _localectl _loginctl \
             _lsmod _machinectl _meson _mkinitcpio _networkctl \
-            _ninja _oh-my-posh _oomctl _pacman _pip \
+            _ninja _oomctl _pacman _pass _pip \
             _plasmashell _playerctl _polybar _polybar_msg _pulseaudio \
             _resolvectl _rg _rmmod _run0 _sd_hosts_or_user_at_host \
             _sd_machines _sd_outputmodes _sd_unit_files _shtab _swayimg \

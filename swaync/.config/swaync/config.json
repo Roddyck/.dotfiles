@@ -25,7 +25,8 @@
     "widgets": [
         "mpris",
         "title",
-        "notifications"
+        "notifications",
+        "backlight"
     ],
     "widget-config": {
         "title": {
@@ -40,12 +41,9 @@
         "mpris": {
             "image-size": 96,
             "image-radius": 12
-        }
-    }
-    "scripts": {
-        "audio": {
-            "exec": "sh $HOME/.scripts/notif.sh",
-            "app-name": ".*",
-        }
+        },
+        "backlight": {
+            "label": "󰃟"
+        },
     }
 }
