@@ -75,6 +75,7 @@ ls.add_snippets("tex", {
             \newtheorem*{statement}{Утверждение}
             \newtheorem*{lemma}{Лемма}
             \newtheorem*{proposal}{Предложение}
+            \newtheorem*{consequence}{Следствие}
 
 
             \theoremstyle{definition}
@@ -175,6 +176,8 @@ ls.add_snippets("tex", {
     s("Nn", t("\\cap"), { condition=math }),
     s("uuu", fmta("\\bigcup_{<> \\in <>}", { i(1, "i"), i(2, "I") }), { condition=math }),
 
+    s("norm", fmta("||<>||<>", {i(1), i(0)}), { condition=math }),
+
     s("RR", t("\\mathbb{R}"), { condition=math }),
     s("QQ", t("\\mathbb{Q}"), { condition=math }),
     s("CC", t("\\mathbb{C}"), { condition=math }),
@@ -228,11 +231,10 @@ ls.add_snippets("tex", {
     postfix("under", { l("\\underline{" .. l.POSTFIX_MATCH .. "}") }),
     postfix("vec", { l("\\vec{" .. l.POSTFIX_MATCH .. "}") }),
 
-    s({ trig='(\\?)(%a+)(%d)', regTrig=true, name='auto subscript', dscr='auto subscript'},
-        fmt([[<><>_<>]],
+    s({ trig='(%a)(%d)', regTrig=true, name='auto subscript', dscr='auto subscript'},
+        fmt([[<>_<>]],
         { f(function(_, snip) return snip.captures[1] end),
-        f(function(_, snip) return snip.captures[2] end),
-        f(function(_, snip) return snip.captures[3] end) },
+        f(function(_, snip) return snip.captures[2] end) },
         { delimiters='<>' }),
         { condition=math }
     ),
