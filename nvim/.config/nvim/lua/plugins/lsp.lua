@@ -59,6 +59,17 @@ return {
                         }
                     }
                 end,
+
+                ["tinymist"] = function()
+                    local lspconfig = require("lspconfig")
+                    lspconfig.tinymist.setup {
+                        capabilities = capabilities,
+                        settings = {
+                            formatterMode = "typstyle",
+                            exportPdf = "onType",
+                        }
+                    }
+                end,
             }
         })
 
